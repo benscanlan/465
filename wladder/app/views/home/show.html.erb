@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<%= link_to "Play Again", root_path %>
+<head>
+ 
+</head>
+<br>
+start_word: <%= @start_word %>
+<br>
+
+<% @array.each do |x| %>
+    <% if( @array.first == x or @array.last == x )%>
+    
+    <% else %>
+    <%= x %>
+    <br>
+    <% end %>
+<% end %>
+
+end_word:
+<%= @end_word %>
+<br>
+<%= @win %>

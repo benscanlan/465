@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ben Scanlan Wladder</title>
+</head>
+<body>
+	<div id= "header">
+		<h1><b><i>Ben Scanlan's Word Ladder</i></b></h1>
+	</div>
+          
+	<body>
+	<p>
+       
+	Fill in each step with a word that differs from the word in the previous step by no more than one character.  Once you reach a word that differs from the goal by only one letter, you can stop and leave the remainder of the steps empty.
+          
+	<div id= "nav">
+		start_word: <%= @start_word %>
+        
+	<%= form_tag(query_field1_path, method: "get") do  %>
+
+          <%= label_tag(:query_field1, "Step 1: ") %>
+          <%= text_field_tag(:query_field1) %>
+          <br>
+          <%= label_tag(:query_field2, "Step 2: ") %>
+          <%= text_field_tag(:query_field2) %>
+          <br>
+          <%= label_tag(:query_field3, "Step 3: ") %>
+          <%= text_field_tag(:query_field3) %>
+          <br>
+          <%= label_tag(:query_field4, "Step 4: ") %>
+          <%= text_field_tag(:query_field4) %>
+          <br>
+          <%= label_tag(:query_field5, "Step 5: ") %>
+          <%= text_field_tag(:query_field5) %>
+          <br>
+          end_word: <%=@end_word %>
+          <br>
+          </div>
+          
+          <div id= "header">
+          <br>
+          <br>
+          <%= submit_tag("Submit Answer") %>
+          <br>
+          <br>
+          <br>
+          </div>          
+          
+          <%= hidden_field_tag(:start_word, @start_word)%>
+          <%= hidden_field_tag(:end_word, @end_word)%>
+          
+</p>
+</body>
+<% end %>
+</html>
+
