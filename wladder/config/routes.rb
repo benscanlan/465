@@ -53,4 +53,13 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+root "home#index"
+get 'start_word', to: "home#show"
+get 'end_word', to: "home#show"
+get 'query_field1', to: "home#show"
+get 'query_field2', to: "home#show"
+get 'query_field3', to: "home#show"
+get 'query_field4', to: "home#show"
+get 'query_field5', to: "home#show"
 end
