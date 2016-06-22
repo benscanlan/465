@@ -1,0 +1,28 @@
+<h1>Listing references</h1>
+
+<table>
+<thead>
+<tr>
+<th>URL</th>
+<th>topic</th>
+<th>annotation</th>
+<th>date</th>
+<th colspan="4"></th>
+</tr>
+</thead>
+
+<tbody>
+<% @references.each do |ref| %>
+    <tr>
+    <td><%= ref.URL %></td>
+    <td><%= ref.topic %></td>
+    <td><%= ref.annotation %></td>
+    <td><%= ref.created_at %></td>
+    <td><%= link_to 'Show', ref %></td>
+    <td><%= link_to 'Edit', edit_reference_path(ref) %></td>
+<td><%= link_to 'Destroy', ref, method: :delete, data: { confirm: "Are you sure you want to delete #{ref.URL}'s bibliography ?" } %></td>
+    </tr>
+    <% end %>
+</tbody>
+</table>
+<%= link_to 'New Reference', controller: "references", action: "new" %>

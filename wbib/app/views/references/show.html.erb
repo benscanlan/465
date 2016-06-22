@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+<strong>URL:</strong>
+<%= @reference.URL %>
+<%= link_to "Click here to view link in new tab!", @reference.URL, target: '_blank' %>
+</p>
+
+<p>
+<strong>topic:</strong>
+<%= @reference.topic %>
+</p>
+
+<p>
+<strong>annotation:</strong>
+<%= @reference.annotation %>
+</p>
+
+<p>
+<strong>date:</strong>
+<%= @reference.created_at %>
+</p>
+<%= link_to 'Destroy', @reference, method: :delete, data: { confirm: "Are you sure you want to delete #{@reference.URL}?" } %>
+<br>
+<%= link_to 'Edit', edit_reference_path(@reference) %>
+<br>
+<%= link_to 'Show All References', references_path %>
