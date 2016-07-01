@@ -28,6 +28,11 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+  <% Image.all.each do |y| %>
+	<% if y.private == 'f' %>
+	  <%= image_tag root_url + "/images/" + y.filename, size: "100x100", alt: y.filename %>
+	<% end %>
+  <% end %>
 <% end %>
 
 <%= render "devise/shared/links" %>

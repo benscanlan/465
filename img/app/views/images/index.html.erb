@@ -1,31 +1,78 @@
-<p id="notice"><%= notice %></p>
+<html>
+<html class="body">
+<div class="body">
+<font size="3">
 
-<h1>Listing Images</h1>
+<style>
+.brdr {
+    border: 3px solid #67BCDB;
+}
+.floating-box {
+    display: inline-block;
+    border-radius: 25px;
+    background: #F5F3EE;
+    padding: 15px;
+    width: 300px;
+    height: 300px;
+    border: 6px solid #67BCDB;
+}
+</style>
 
-<table>
-  <thead>
-    <tr>
-      <th>Filename</th>
-      <th>Private</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="brdr">
 
-  <tbody>
-    <% @images.each do |image| %>
-      <tr>
-        <td><%= image.filename %></td>
-        <td><%= image.private %></td>
-        <td><%= image.user %></td>
-        <td><%= link_to 'Show', image %></td>
-        <td><%= link_to 'Edit', edit_image_path(image) %></td>
-        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="brdr"><center><h1>Welcome to Ben's Social Image Network</h1></center><br></div>
+
+<% if user_signed_in? %>
+
+<div class="brdr"><p id="notice"><%= notice %></p>
+<%=link_to 'New Image', new_image_path %></div>
+
+<div class="brdr"><center><h2><%= current_user.name %>'s Images</h2></center></div>
+<% @images.each do |image| %>
+    <% if current_user.name == image.user.name %>
+    <div class="floating-box">
+    <table>
+    <td>
+    <%=link_to (image_tag root_url + "/images/" + image.filename, size: "250x250", alt: image.filename), image %><br>
+    <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
+    </table>
+    </div>
     <% end %>
-  </tbody>
-</table>
+<% end %> <br><br><br>
 
-<br>
+<div class="brdr"><center><h2>Public Images<h2></center></div>
+<% @images.each do |image| %>
+    <% if current_user.name != image.user.name %>
+    <div class="floating-box">
+    <table>
+    <td>
+    <%=link_to (image_tag root_url + "/images/" + image.filename, size: "115x115", alt: image.filename), image %>
+    <br> <%=image.user.name %><br>
+    <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
+    </table>
+    </div>
+    <% end %>
+<% end %><br>
 
-<%= link_to 'New Image', new_image_path %>
+<% else %>
+<div class="brdr"><center><h2>Public Images<h2></center></div>
+<% @images.each do |image| %>
+    <% if image.private == "f" %>
+    <div class="floating-box">
+    <table>
+    <td>
+    <%=link_to (image_tag root_url + "/images/" + image.filename, size: "300x300", alt: image.filename), image %>
+    <br><%= image.user.name %>
+    </td>
+    </table>
+    </div>
+    <% end %>
+<% end %>
+<% end %>
+
+</div>
+</font>
+</div>
+</html>
