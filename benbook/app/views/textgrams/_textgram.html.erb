@@ -1,0 +1,11 @@
+<li class="<%=  self_or_other(textgram) %>">
+<div class="avatar">
+<img src="http://placehold.it/50x50" />
+</div>
+<div class="chatboxtextgramcontent">
+<p><%= textgram.message %></p>
+<time datetime="<%= textgram.created_at %>" title="<%= textgram.created_at.strftime("%d %b  %Y at %I:%M%p") %>">
+<%= textgram_interlocutor(textgram).name %> • <%= textgram.created_at.strftime("%H:%M %p") %>
+</time>
+</div>
+</li>

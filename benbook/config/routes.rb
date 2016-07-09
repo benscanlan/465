@@ -54,4 +54,19 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+authenticated :user do
+    root 'users#index'
+end
+
+unauthenticated :user do
+    devise_scope :user do
+        get "/" => "devise/sessions#new"
+    end
+end
+
+resources :chats do
+    resources :textgrams
+end
+
 end

@@ -1,14 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Benbook</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
+
+<h1>Benbook</h1>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= csrf_meta_tags %>
+
+<!-- shiv here -->
+
 </head>
+
 <body>
 
-<%= yield %>
+<% if user_signed_in? %>
+<h4>
+<%= "Logged in as #{current_user.name}" %>
+</h4>
+<li>
+<%= link_to "Logout", destroy_user_session_path, method: :delete	  %>
+</li>
 
+
+
+<% end %>
+
+
+
+<div class="container">
+<%= yield %>
+</div>
 </body>
+
 </html>
